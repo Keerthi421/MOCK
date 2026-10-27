@@ -128,4 +128,6 @@ The Vite development proxy expects the API at `http://localhost:8000` when run o
 
 ## Development status
 
-The repository was empty at project start. This README establishes the target scope and implementation checklist; it does not claim that the features have already been implemented.
+## Current implementation status
+
+Implemented starter foundation: responsive dashboard UI, navigation, problem search/filter/detail modal, browser-local completion toggles, FastAPI health and problem APIs, PostgreSQL Docker service, seeded original examples, and API smoke tests. This is not yet production-ready and does not yet implement authentication, multi-user progress storage, AI interviews, course content, the diagram editor, code runner, or the full ScaleMock-equivalent feature set. The 500-session capacity remains unverified until load tests are run.
