@@ -26,3 +26,6 @@ Thumbs.db
 # Test / local data
 *.sqlite3
 *.log
+
+# Local development database files
+*.db
