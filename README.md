@@ -53,6 +53,10 @@ These numbers are targets from the supplied audit, not an independently verified
 
 Create original questions and course material, or import content the user is authorized to use. Do not fabricate company provenance or claim an assessment is an actual company test without evidence.
 
+## Scalability target
+
+The initial deployment is designed and load-tested toward 500 simultaneous authenticated sessions (a conservative interpretation of “500 active users”), with ordinary API traffic separated from AI and code-execution workloads. This is a target, not a guarantee: actual capacity must be validated by load tests against the selected hosting plans. See [the 500-user scalability plan](docs/SCALABILITY_500_USERS.md) for topology, sizing assumptions, security, observability, load tests, and cost controls.
+
 ## Engineering principles
 
 - Local-first, single-user by default
