@@ -80,6 +80,52 @@ The initial deployment is designed and load-tested toward 500 simultaneous authe
 - AI: provider abstraction configured through environment variables
 - Testing: frontend component tests, API tests and end-to-end browser tests
 
+## Run locally
+
+Requirements: Docker Desktop with Docker Compose, or Python 3.12 and Node.js 20+ for running services separately.
+
+### Recommended: Docker Compose
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Keerthi421/MOCK.git
+   cd MOCK
+   ```
+2. Optionally copy `.env.example` to `.env` and change the local PostgreSQL password. The example/default password is for local development only.
+3. Start the stack:
+   ```bash
+   docker compose up --build
+   ```
+4. Open the frontend at `http://localhost:5173`.
+5. Check the API health endpoint at `http://localhost:8000/health` and API docs at `http://localhost:8000/docs`.
+
+The first API startup creates the starter schema and inserts a few original sample problems. This is a development bootstrap, not the production migration strategy. Do not expose this stack to the public internet as-is: authentication, production migrations, hardened secrets, rate limiting, and operational monitoring are not yet complete.
+
+### Run backend tests
+
+From the repository root, install the development dependencies and run:
+
+```bash
+python -m venv .venv
+# Windows PowerShell: .venv\\Scripts\\Activate.ps1
+# macOS/Linux: source .venv/bin/activate
+pip install -r backend/requirements-dev.txt
+cd backend
+pytest
+```
+
+Tests use the SQLite fallback unless `DATABASE_URL` is set. They verify the health route, seeded problem list, and module filtering.
+
+### Run frontend without Docker
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The Vite development proxy expects the API at `http://localhost:8000` when run outside Docker.
+
 ## Development status
 
 The repository was empty at project start. This README establishes the target scope and implementation checklist; it does not claim that the features have already been implemented.
